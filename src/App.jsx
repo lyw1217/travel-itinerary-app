@@ -42,7 +42,7 @@ export default function App() {
       icon: <AlertCircle className="w-5 h-5 text-red-500" />,
       color: "border-l-4 border-red-400 bg-red-50/30",
       items: [
-        { id: 'chk_cancel_agoda', text: '아고다 숙소 예약 취소 (이전 예약건)' },
+        // 아고다 취소 완료로 삭제됨
         { id: 'chk_re_hotel', text: '숙소 예약 재확인 (히노데 호텔)' },
         { id: 'chk_re_flight', text: '항공 예약 재확인 (파라타/티웨이)' },
         { id: 'chk_re_tour', text: '교토 버스투어 예약 확정 확인' },
@@ -55,7 +55,8 @@ export default function App() {
       items: [
         { id: 'res_flight', text: '왕복 항공권 E-티켓 저장/출력' },
         { id: 'res_hotel', text: '호텔 바우처 저장/출력' },
-        { id: 'res_rapit', text: '라피트 왕복권 예매 (QR)' },
+        { id: 'res_rapit', text: '라피트 왕복권 예매 (간사이공항 ↔ 난바)' },
+        { id: 'res_food', text: '주요 식당 및 맛집 예약 (저녁식사 등)' },
         { id: 'res_amazing', text: '오사카 주유패스 1일권 (2/18 사용) 예매' },
         { id: 'res_cruise', text: '도톤보리 리버(원더)크루즈 예약 (17:30~ 추천)' },
         { id: 'res_wifi', text: '와이파이 도시락 or 로밍 신청' },
@@ -276,7 +277,7 @@ export default function App() {
               <div>
                 <h3 className="font-bold text-stone-800 text-sm mb-1">체크리스트 활용법</h3>
                 <p className="text-xs text-stone-600 leading-relaxed">
-                  항목을 누르면 완료 표시(✅)가 됩니다. 여행 전 부모님과 함께 하나씩 체크해보세요.
+                  항목을 누르면 완료 표시(✅)가 되고 자동 저장됩니다. 여행 전 부모님과 함께 하나씩 체크해보세요.
                 </p>
               </div>
             </div>
@@ -318,13 +319,13 @@ export default function App() {
                 <Beer className="text-red-500" size={20} /> 확정 숙소 정보
               </h3>
               <div className="flex gap-4 items-start mb-3">
-                <img src="https://cf.bstatic.com/xdata/images/hotel/max1024x768/223758362.jpg?k=5b2e5c8e8e8e8e8e8e8e8e8e8e8e8e8e8e8e8e8e8e8e8e8e8e8e8e8e8e8e8e&o=&hp=1" alt="Hinode Hotel" className="w-20 h-20 rounded-lg object-cover bg-gray-200" onError={(e) => e.target.style.display = 'none'} />
+                <img src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Hinode Hotel" className="w-20 h-20 rounded-lg object-cover bg-gray-200" onError={(e) => e.target.style.display = 'none'} />
                 <div>
                   <div className="font-bold text-lg text-red-900">히노데 호텔 닛폰바시</div>
                   <div className="text-xs text-stone-500 mt-1">Triple Room (싱글 침대 3개)</div>
 
                   {/* Google Map Link Added */}
-                  <a
+                  <a 
                     href="https://www.google.com/maps/place/%EC%98%A4%EC%82%AC%EC%B9%B4+%ED%9E%88%EB%85%B8%EB%8D%B0+%ED%98%B8%ED%85%94+%EB%8B%9B%ED%8F%B0%EB%B0%94%EC%8B%9C/@34.6547847,135.5022192,17z/data=!4m9!3m8!1s0x6000e766d8b76335:0x18e31717b1ee08f0!5m2!4m1!1i2!8m2!3d34.6547847!4d135.5047941!16s%2Fg%2F11f04lkqgh?entry=ttu&g_ep=EgoyMDI2MDEyMS4wIKXMDSoASAFQAw%3D%3D" 
                     target="_blank" 
                     rel="noopener noreferrer"
