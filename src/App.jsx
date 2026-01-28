@@ -9,20 +9,18 @@ const Card = ({ children, className = "" }) => (
 
 export default function App() {
   const [activeTab, setActiveTab] = useState('itinerary');
-  // 다중 선택 지원: 여러 날짜를 동시에 펼쳐볼 수 있습니다.
-  const [expandedDays, setExpandedDays] = useState([]);
+  const [expandedDays, setExpandedDays] = useState([]); 
   const [showBudget, setShowBudget] = useState(false);
 
-  // 로컬 상태 관리 (Firebase 제거됨)
   const [checkedItems, setCheckedItems] = useState({});
 
   // --- Action Handlers ---
 
   const toggleDay = (day) => {
     setExpandedDays(prev =>
-      prev.includes(day)
-        ? prev.filter(d => d !== day) // 이미 있으면 제거 (닫기)
-        : [...prev, day] // 없으면 추가 (열기)
+      prev.includes(day) 
+        ? prev.filter(d => d !== day)
+        : [...prev, day] 
     );
   };
 
@@ -58,7 +56,7 @@ export default function App() {
         { id: 'res_flight', text: '왕복 항공권 E-티켓 저장/출력' },
         { id: 'res_hotel', text: '호텔 바우처 저장/출력' },
         { id: 'res_rapit', text: '라피트 왕복권 예매 (QR)' },
-        { id: 'res_cruise', text: '도톤보리 리버크루즈 예약' },
+        { id: 'res_cruise', text: '도톤보리 리버크루즈 예약 (17:30~ 추천)' },
         { id: 'res_wifi', text: '와이파이 도시락 or 로밍 신청' },
         { id: 'res_ins', text: '여행자 보험 가입 (3인)' },
         { id: 'res_vjw', text: 'Visit Japan Web 등록 (입국용)' },
@@ -90,10 +88,10 @@ export default function App() {
       color: "border-l-4 border-orange-500",
       activities: [
         { time: "08:10", icon: <Car className="w-5 h-5 text-gray-600" />, title: "인천공항 도착 (자차)", desc: "출발 3시간 전 도착. 장기주차장 주차 후 여유롭게 체크인" },
-        { time: "11:10", icon: <Plane className="w-5 h-5 text-blue-500" />, title: "인천공항 출발", desc: "파라타 항공, 위탁수하물 30kg 포함으로 넉넉하게" },
-        { time: "13:00", icon: <MapPin className="w-5 h-5 text-green-500" />, title: "간사이 공항 도착", desc: "입국 수속 후 라피트 탑승 (텐가차야 하차)" },
-        { time: "15:00", icon: <Coffee className="w-5 h-5 text-amber-600" />, title: "히노데 호텔 체크인", desc: "에비스초역 1분. 얼리 체크인 또는 짐 보관 후 가벼운 차림" },
-        { time: "16:00", icon: <Camera className="w-5 h-5 text-rose-500" />, title: "신세카이 & 츠텐카쿠", desc: "낮과 밤의 매력이 다른 레트로 거리 산책" },
+        { time: "11:10", icon: <Plane className="w-5 h-5 text-blue-500" />, title: "인천공항 출발", desc: "파라타 항공, 위탁수하물 15kg 포함 (짐 무게 주의)" },
+        { time: "13:00", icon: <MapPin className="w-5 h-5 text-green-500" />, title: "간사이 공항 도착", desc: "입국 수속 후 라피트 탑승 (신이마미야 하차)" },
+        { time: "15:00", icon: <Coffee className="w-5 h-5 text-amber-600" />, title: "히노데 호텔 체크인", desc: "신이마미야역 → 사카이스지선 환승 → 에비스초역 5번 출구 (도보 1분)" },
+        { time: "16:00", icon: <Camera className="w-5 h-5 text-rose-500" />, title: "신세카이 & 츠텐카쿠", desc: "호텔 바로 옆! 낮과 밤의 매력이 다른 레트로 거리 산책" },
         { time: "18:00", icon: <Utensils className="w-5 h-5 text-orange-500" />, title: "저녁: 쿠시카츠(튀김꼬치)", desc: "다루마 등 유명 꼬치집에서 시원한 맥주 한잔" },
         { time: "20:30", icon: <Beer className="w-5 h-5 text-yellow-500" />, title: "호텔 해피아워 (무료)", desc: "호텔 무료 라면 & 주류 무제한 파티 즐기기" }
       ]
@@ -105,12 +103,12 @@ export default function App() {
       theme: "아라시야마부터 청수사까지",
       color: "border-l-4 border-emerald-500",
       activities: [
-        { time: "07:50", icon: <Bus className="w-5 h-5 text-emerald-600" />, title: "투어 집합 및 출발", desc: "집합 장소(난바 등) 시간 엄수. 조금 일찍 도착 권장" },
-        { time: "09:40", icon: <Leaf className="w-5 h-5 text-green-600" />, title: "아라시야마 (3h) & 점심", desc: "대나무 숲, 도게츠교 산책. 체류 시간이 기므로 이곳에서 여유롭게 점심 식사" },
-        { time: "13:00", icon: <Camera className="w-5 h-5 text-yellow-600" />, title: "금각사 (50m)", desc: "황금빛 3층 누각과 연못이 어우러진 교토의 상징 (입장료 500엔/인)" },
-        { time: "14:25", icon: <Ticket className="w-5 h-5 text-purple-600" />, title: "청수사(기요미즈데라) (2h)", desc: "절벽 위 사찰 관람. 니넨자카/산넨자카 거리 구경 (입장료 500엔/인)" },
+        { time: "07:50", icon: <Bus className="w-5 h-5 text-emerald-600" />, title: "투어 집합 및 출발", desc: "시간 엄수! 호텔에서 난바 집합장소까지 이동 시간(약 20분) 고려하여 출발" },
+        { time: "09:40", icon: <Leaf className="w-5 h-5 text-green-600" />, title: "아라시야마 (3h) & 점심", desc: "대나무 숲 산책. 체류 시간이 기므로 이곳에서 여유롭게 점심 식사" },
+        { time: "13:00", icon: <Camera className="w-5 h-5 text-yellow-600" />, title: "금각사 (50m)", desc: "황금빛 3층 누각과 연못이 어우러진 교토의 상징 (입장료 500엔)" },
+        { time: "14:25", icon: <Ticket className="w-5 h-5 text-purple-600" />, title: "청수사(기요미즈데라) (2h)", desc: "★팁: 부모님이 힘드시면 본당 계단 대신 니넨자카 거리 위주로 산책하세요." },
         { time: "16:50", icon: <Bus className="w-5 h-5 text-gray-500" />, title: "교토역 경유", desc: "숙박객 하차 지점 (오사카 숙박이므로 계속 탑승)" },
-        { time: "18:00", icon: <MapPin className="w-5 h-5 text-gray-600" />, title: "오사카 복귀 및 해산", desc: "투어 종료. 저녁 식사 후 호텔 온천으로 피로 풀기" }
+        { time: "18:00", icon: <MapPin className="w-5 h-5 text-gray-600" />, title: "오사카 복귀 및 해산", desc: "투어 종료 후 저녁 식사 및 호텔 온천으로 완전 휴식" }
       ]
     },
     {
@@ -120,10 +118,10 @@ export default function App() {
       theme: "오사카 성 & 우메다 & 도톤보리",
       color: "border-l-4 border-blue-500",
       activities: [
-        { time: "09:30", icon: <MapPin className="w-5 h-5 text-green-600" />, title: "오사카 성 공원", desc: "천수각 배경 사진 필수. 코끼리 열차 이용하여 걷기 최소화" },
+        { time: "09:30", icon: <MapPin className="w-5 h-5 text-green-600" />, title: "오사카 성 공원", desc: "공원 산책 및 외관 촬영 위주. 천수각 내부는 대기 줄이 길면 생략 추천" },
         { time: "12:30", icon: <Utensils className="w-5 h-5 text-rose-500" />, title: "점심: 우메다 함박스테이크", desc: "동양정 등 유명 경양식 맛집 (부모님들이 좋아하시는 맛)" },
         { time: "14:30", icon: <Camera className="w-5 h-5 text-blue-600" />, title: "우메다 공중정원 or 쇼핑", desc: "탁 트인 전망대 관람 또는 한큐백화점 손수건 쇼핑" },
-        { time: "17:00", icon: <Ticket className="w-5 h-5 text-purple-600" />, title: "도톤보리 리버크루즈", desc: "해 질 녘 배 타고 글리코상 앞에서 사진 찍기 (예약 필수)" },
+        { time: "17:30", icon: <Ticket className="w-5 h-5 text-purple-600" />, title: "도톤보리 리버크루즈", desc: "해 지는 시간대(17:30~) 추천! 배 타고 야경 감상 (예약 필수)" },
         { time: "19:00", icon: <Utensils className="w-5 h-5 text-rose-500" />, title: "저녁: 와규 야키니쿠", desc: "오사카에서의 마지막 만찬, 입에서 녹는 소고기" }
       ]
     },
@@ -137,8 +135,8 @@ export default function App() {
         { time: "10:00", icon: <CreditCard className="w-5 h-5 text-gray-500" />, title: "체크아웃 & 짐 보관", desc: "호텔에 짐 맡기고 가벼운 차림으로 이동" },
         { time: "10:30", icon: <Utensils className="w-5 h-5 text-orange-500" />, title: "구로몬 시장 투어", desc: "도보 10분. 신선한 해산물, 과일 등 아침 겸 점심 군것질" },
         { time: "12:30", icon: <ShoppingBag className="w-5 h-5 text-purple-600" />, title: "난바 파크스 쇼핑", desc: "공중정원 산책 후 쇼핑몰에서 마지막 선물 구매" },
-        { time: "15:00", icon: <Coffee className="w-5 h-5 text-amber-600" />, title: "짐 찾기 및 이동 준비", desc: "호텔 복귀하여 짐 찾고 텐가차야역으로 이동" },
-        { time: "16:00", icon: <Train className="w-5 h-5 text-blue-600" />, title: "공항 이동 (라피트)", desc: "16:00 라피트 탑승 → 16:40 공항 도착 (출발 2시간 30분 전)" },
+        { time: "15:00", icon: <Coffee className="w-5 h-5 text-amber-600" />, title: "짐 찾기 및 이동 준비", desc: "호텔 복귀하여 짐 찾고 에비스초역→신이마미야역 이동" },
+        { time: "16:00", icon: <Train className="w-5 h-5 text-blue-600" />, title: "공항 이동 (라피트)", desc: "신이마미야역 16:04경 탑승 → 16:40 공항 도착 (출발 2h 30m 전)" },
         { time: "19:10", icon: <Plane className="w-5 h-5 text-blue-500" />, title: "간사이 공항 출발", desc: "티웨이항공 (TW), 21:05 인천 도착" }
       ]
     }
@@ -148,7 +146,7 @@ export default function App() {
     flight: 606398 + 966251,
     hotel: 923212,
     food: 100000 * 3 * 4,
-    transport: 300000,
+    transport: 300000, 
     reserve: 200000
   };
 
@@ -163,7 +161,7 @@ export default function App() {
         </div>
 
         {/* Secret Toggle Button */}
-        <button
+        <button 
           onClick={toggleSecretMode}
           className="absolute top-4 right-4 p-2 rounded-full bg-black/10 hover:bg-black/20 text-white/50 hover:text-white transition-all z-50"
           title={showBudget ? "예산 숨기기" : "상세 비용 보기"}
@@ -184,19 +182,19 @@ export default function App() {
       {/* Navigation Tabs */}
       <div className="max-w-md mx-auto -mt-6 px-4 relative z-20">
         <div className="bg-white rounded-full p-1 shadow-md flex justify-center">
-          <button
+          <button 
             onClick={() => setActiveTab('itinerary')}
             className={`flex-1 py-3 rounded-full text-sm font-bold transition-all ${activeTab === 'itinerary' ? 'bg-orange-600 text-white shadow-md' : 'text-stone-500 hover:bg-stone-100'}`}
           >
             여행 일정
           </button>
-          <button
+          <button 
             onClick={() => setActiveTab('checklist')}
             className={`flex-1 py-3 rounded-full text-sm font-bold transition-all ${activeTab === 'checklist' ? 'bg-orange-600 text-white shadow-md' : 'text-stone-500 hover:bg-stone-100'}`}
           >
             체크리스트
           </button>
-          <button
+          <button 
             onClick={() => setActiveTab('info')}
             className={`flex-1 py-3 rounded-full text-sm font-bold transition-all ${activeTab === 'info' ? 'bg-orange-600 text-white shadow-md' : 'text-stone-500 hover:bg-stone-100'}`}
           >
@@ -215,14 +213,14 @@ export default function App() {
               <div>
                 <h3 className="font-bold text-emerald-800 text-sm mb-1">2일차: 교토 버스투어</h3>
                 <p className="text-xs text-emerald-800 leading-relaxed">
-                  <strong>07:50 출발!</strong> 아라시야마에서 3시간 동안 여유롭게 자연을 즐기고 점심 식사를 합니다. 이후 금각사와 청수사를 편안하게 버스로 이동합니다.
+                  <strong>07:50 출발!</strong> 집합 장소(난바)까지 이동 시간(약 20분)을 고려해 여유 있게 출발해 주세요. 교토에서는 체력에 맞춰 쉬엄쉬엄 다니시면 됩니다.
                 </p>
               </div>
             </div>
 
             {schedule.map((day) => (
               <Card key={day.day} className={day.color}>
-                <div
+                <div 
                   className="p-4 flex items-center justify-between cursor-pointer active:bg-stone-50 transition-colors"
                   onClick={() => toggleDay(day.day)}
                 >
@@ -277,7 +275,7 @@ export default function App() {
               <div>
                 <h3 className="font-bold text-stone-800 text-sm mb-1">체크리스트 활용법</h3>
                 <p className="text-xs text-stone-600 leading-relaxed">
-                  항목을 누르면 완료 표시(✅)가 됩니다. 여행 전 부모님과 함께 하나씩 체크해보세요.
+                  항목을 누르면 완료 표시(✅)가 되고 자동 저장됩니다. 여행 전 부모님과 함께 하나씩 체크해보세요.
                 </p>
               </div>
             </div>
@@ -290,13 +288,13 @@ export default function App() {
                 </div>
                 <div className="p-2">
                   {section.items.map((item) => (
-                    <div
+                    <div 
                       key={item.id}
                       onClick={() => toggleCheck(item.id)}
                       className={`p-3 m-1 rounded-lg flex items-center gap-3 cursor-pointer transition-all ${checkedItems[item.id] ? 'bg-stone-100 text-stone-400' : 'hover:bg-stone-50'}`}
                     >
                       {checkedItems[item.id] ?
-                        <CheckCircle2 className="w-5 h-5 text-stone-400 shrink-0" /> :
+                        <CheckCircle2 className="w-5 h-5 text-stone-400 shrink-0" /> : 
                         <Circle className="w-5 h-5 text-stone-300 shrink-0" />
                       }
                       <span className={`text-sm font-medium ${checkedItems[item.id] ? 'line-through' : 'text-stone-700'}`}>
@@ -327,7 +325,7 @@ export default function App() {
                   {/* Google Map Link Added */}
                   <a
                     href="https://www.google.com/maps/place/%EC%98%A4%EC%82%AC%EC%B9%B4+%ED%9E%88%EB%85%B8%EB%8D%B0+%ED%98%B8%ED%85%94+%EB%8B%9B%ED%8F%B0%EB%B0%94%EC%8B%9C/@34.6547847,135.5022192,17z/data=!4m9!3m8!1s0x6000e766d8b76335:0x18e31717b1ee08f0!5m2!4m1!1i2!8m2!3d34.6547847!4d135.5047941!16s%2Fg%2F11f04lkqgh?entry=ttu&g_ep=EgoyMDI2MDEyMS4wIKXMDSoASAFQAw%3D%3D"
-                    target="_blank"
+                    target="_blank" 
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-1 text-xs text-blue-600 hover:text-blue-800 mt-2 font-bold bg-blue-50 px-2 py-1 rounded-md border border-blue-100"
                   >
@@ -353,7 +351,7 @@ export default function App() {
                     <div className="text-xs text-stone-500">ICN → KIX (파라타)</div>
                     <div className="font-bold text-lg">11:10</div>
                     <div className="text-xs text-stone-400">02.16 (월)</div>
-                    <div className="text-[10px] text-blue-500 mt-1">위탁 30kg</div>
+                    <div className="text-[10px] text-blue-500 mt-1">위탁 15kg</div>
                   </div>
                   <div className="text-stone-300">✈︎</div>
                   <div className="text-right">
@@ -385,7 +383,7 @@ export default function App() {
               <ul className="space-y-3 text-sm text-stone-600">
                 <li className="flex gap-2 items-start">
                   <span className="text-rose-500 font-bold">1.</span>
-                  <span><strong>수하물 무게 확인</strong>: 갈 때는 30kg로 넉넉하지만, 올 때는 20kg입니다. 쇼핑 시 무게 배분에 유의하세요.</span>
+                  <span><strong>수하물 무게 확인</strong>: 갈 때는 15kg, 올 때는 20kg입니다. 쇼핑 시 무게 배분에 유의하세요.</span>
                 </li>
                 <li className="flex gap-2 items-start">
                   <span className="text-rose-500 font-bold">2.</span>
