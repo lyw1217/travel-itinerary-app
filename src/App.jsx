@@ -17,9 +17,9 @@ export default function App() {
   // --- Action Handlers ---
 
   const toggleDay = (day) => {
-    setExpandedDays(prev =>
+    setExpandedDays(prev => 
       prev.includes(day) 
-        ? prev.filter(d => d !== day)
+        ? prev.filter(d => d !== day) 
         : [...prev, day] 
     );
   };
@@ -56,7 +56,8 @@ export default function App() {
         { id: 'res_flight', text: '왕복 항공권 E-티켓 저장/출력' },
         { id: 'res_hotel', text: '호텔 바우처 저장/출력' },
         { id: 'res_rapit', text: '라피트 왕복권 예매 (QR)' },
-        { id: 'res_cruise', text: '도톤보리 리버크루즈 예약 (17:30~ 추천)' },
+        { id: 'res_amazing', text: '오사카 주유패스 1일권 (2/18 사용) 예매' },
+        { id: 'res_cruise', text: '도톤보리 리버(원더)크루즈 예약 (17:30~ 추천)' },
         { id: 'res_wifi', text: '와이파이 도시락 or 로밍 신청' },
         { id: 'res_ins', text: '여행자 보험 가입 (3인)' },
         { id: 'res_vjw', text: 'Visit Japan Web 등록 (입국용)' },
@@ -114,14 +115,14 @@ export default function App() {
     {
       day: 3,
       date: "2월 18일 (수)",
-      title: "오사카 랜드마크 투어",
-      theme: "오사카 성 & 우메다 & 도톤보리",
+      title: "오사카 랜드마크 투어 (주유패스)",
+      theme: "주유패스로 교통비·입장료 프리패스",
       color: "border-l-4 border-blue-500",
       activities: [
-        { time: "09:30", icon: <MapPin className="w-5 h-5 text-green-600" />, title: "오사카 성 공원", desc: "공원 산책 및 외관 촬영 위주. 천수각 내부는 대기 줄이 길면 생략 추천" },
+        { time: "09:30", icon: <MapPin className="w-5 h-5 text-green-600" />, title: "오사카 성 공원", desc: "★천수각 입장 무료(주유패스). 공원 산책 및 외관 촬영 위주." },
         { time: "12:30", icon: <Utensils className="w-5 h-5 text-rose-500" />, title: "점심: 우메다 함박스테이크", desc: "동양정 등 유명 경양식 맛집 (부모님들이 좋아하시는 맛)" },
-        { time: "14:30", icon: <Camera className="w-5 h-5 text-blue-600" />, title: "우메다 공중정원 or 쇼핑", desc: "탁 트인 전망대 관람 또는 한큐백화점 손수건 쇼핑" },
-        { time: "17:30", icon: <Ticket className="w-5 h-5 text-purple-600" />, title: "도톤보리 리버크루즈", desc: "해 지는 시간대(17:30~) 추천! 배 타고 야경 감상 (예약 필수)" },
+        { time: "14:30", icon: <Camera className="w-5 h-5 text-blue-600" />, title: "우메다 공중정원", desc: "★입장 무료(주유패스, 15:00 이전 입장 시). 탁 트인 전망 감상" },
+        { time: "17:30", icon: <Ticket className="w-5 h-5 text-purple-600" />, title: "도톤보리 리버(원더)크루즈", desc: "★승선 무료(주유패스). 매표소에서 패스 제시 후 티켓 교환 필수" },
         { time: "19:00", icon: <Utensils className="w-5 h-5 text-rose-500" />, title: "저녁: 와규 야키니쿠", desc: "오사카에서의 마지막 만찬, 입에서 녹는 소고기" }
       ]
     },
@@ -275,7 +276,7 @@ export default function App() {
               <div>
                 <h3 className="font-bold text-stone-800 text-sm mb-1">체크리스트 활용법</h3>
                 <p className="text-xs text-stone-600 leading-relaxed">
-                  항목을 누르면 완료 표시(✅)가 되고 자동 저장됩니다. 여행 전 부모님과 함께 하나씩 체크해보세요.
+                  항목을 누르면 완료 표시(✅)가 됩니다. 여행 전 부모님과 함께 하나씩 체크해보세요.
                 </p>
               </div>
             </div>
@@ -293,7 +294,7 @@ export default function App() {
                       onClick={() => toggleCheck(item.id)}
                       className={`p-3 m-1 rounded-lg flex items-center gap-3 cursor-pointer transition-all ${checkedItems[item.id] ? 'bg-stone-100 text-stone-400' : 'hover:bg-stone-50'}`}
                     >
-                      {checkedItems[item.id] ?
+                      {checkedItems[item.id] ? 
                         <CheckCircle2 className="w-5 h-5 text-stone-400 shrink-0" /> : 
                         <Circle className="w-5 h-5 text-stone-300 shrink-0" />
                       }
@@ -324,7 +325,7 @@ export default function App() {
 
                   {/* Google Map Link Added */}
                   <a
-                    href="https://www.google.com/maps/place/%EC%98%A4%EC%82%AC%EC%B9%B4+%ED%9E%88%EB%85%B8%EB%8D%B0+%ED%98%B8%ED%85%94+%EB%8B%9B%ED%8F%B0%EB%B0%94%EC%8B%9C/@34.6547847,135.5022192,17z/data=!4m9!3m8!1s0x6000e766d8b76335:0x18e31717b1ee08f0!5m2!4m1!1i2!8m2!3d34.6547847!4d135.5047941!16s%2Fg%2F11f04lkqgh?entry=ttu&g_ep=EgoyMDI2MDEyMS4wIKXMDSoASAFQAw%3D%3D"
+                    href="https://www.google.com/maps/place/%EC%98%A4%EC%82%AC%EC%B9%B4+%ED%9E%88%EB%85%B8%EB%8D%B0+%ED%98%B8%ED%85%94+%EB%8B%9B%ED%8F%B0%EB%B0%94%EC%8B%9C/@34.6547847,135.5022192,17z/data=!4m9!3m8!1s0x6000e766d8b76335:0x18e31717b1ee08f0!5m2!4m1!1i2!8m2!3d34.6547847!4d135.5047941!16s%2Fg%2F11f04lkqgh?entry=ttu&g_ep=EgoyMDI2MDEyMS4wIKXMDSoASAFQAw%3D%3D" 
                     target="_blank" 
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-1 text-xs text-blue-600 hover:text-blue-800 mt-2 font-bold bg-blue-50 px-2 py-1 rounded-md border border-blue-100"
