@@ -42,7 +42,6 @@ export default function App() {
       icon: <AlertCircle className="w-5 h-5 text-red-500" />,
       color: "border-l-4 border-red-400 bg-red-50/30",
       items: [
-        // 아고다 취소 완료로 삭제됨
         { id: 'chk_re_hotel', text: '숙소 예약 재확인 (히노데 호텔)' },
         { id: 'chk_re_flight', text: '항공 예약 재확인 (파라타/티웨이)' },
         { id: 'chk_re_tour', text: '교토 버스투어 예약 확정 확인' },
@@ -91,8 +90,10 @@ export default function App() {
       activities: [
         { time: "08:10", icon: <Car className="w-5 h-5 text-gray-600" />, title: "인천공항 도착 (자차)", desc: "출발 3시간 전 도착. 장기주차장 주차 후 여유롭게 체크인" },
         { time: "11:10", icon: <Plane className="w-5 h-5 text-blue-500" />, title: "인천공항 출발", desc: "파라타 항공, 위탁수하물 15kg 포함 (짐 무게 주의)" },
-        { time: "13:00", icon: <MapPin className="w-5 h-5 text-green-500" />, title: "간사이 공항 도착", desc: "입국 수속 후 라피트 탑승 (신이마미야 하차)" },
-        { time: "15:00", icon: <Coffee className="w-5 h-5 text-amber-600" />, title: "히노데 호텔 체크인", desc: "신이마미야역 → 사카이스지선 환승 → 에비스초역 5번 출구 (도보 1분)" },
+        { time: "13:00", icon: <MapPin className="w-5 h-5 text-green-500" />, title: "간사이 공항 도착", desc: "입국 수속 및 짐 찾기 (약 40~50분 소요 예상)" },
+        { time: "13:50", icon: <Utensils className="w-5 h-5 text-amber-600" />, title: "점심: 공항 도시락(에키벤) 구매", desc: "★팁: 식당 대기 대신 맛있는 도시락을 사서 열차 내에서 편하게 드세요." },
+        { time: "14:05", icon: <Train className="w-5 h-5 text-blue-600" />, title: "라피트 열차 탑승 (확정)", desc: "14:05 출발 → 14:40 신이마미야역 도착. (도시락 식사)" },
+        { time: "15:10", icon: <Coffee className="w-5 h-5 text-amber-600" />, title: "히노데 호텔 체크인", desc: "신이마미야역 → 사카이스지선 환승 → 에비스초역 5번 출구 (도보 1분)" },
         { time: "16:00", icon: <Camera className="w-5 h-5 text-rose-500" />, title: "신세카이 & 츠텐카쿠", desc: "호텔 바로 옆! 낮과 밤의 매력이 다른 레트로 거리 산책" },
         { time: "18:00", icon: <Utensils className="w-5 h-5 text-orange-500" />, title: "저녁: 쿠시카츠(튀김꼬치)", desc: "다루마 등 유명 꼬치집에서 시원한 맥주 한잔" },
         { time: "20:30", icon: <Beer className="w-5 h-5 text-yellow-500" />, title: "호텔 해피아워 (무료)", desc: "호텔 무료 라면 & 주류 무제한 파티 즐기기" }
@@ -138,7 +139,7 @@ export default function App() {
         { time: "10:30", icon: <Utensils className="w-5 h-5 text-orange-500" />, title: "구로몬 시장 투어", desc: "도보 10분. 신선한 해산물, 과일 등 아침 겸 점심 군것질" },
         { time: "12:30", icon: <ShoppingBag className="w-5 h-5 text-purple-600" />, title: "난바 파크스 쇼핑", desc: "공중정원 산책 후 쇼핑몰에서 마지막 선물 구매" },
         { time: "15:00", icon: <Coffee className="w-5 h-5 text-amber-600" />, title: "짐 찾기 및 이동 준비", desc: "호텔 복귀하여 짐 찾고 에비스초역→신이마미야역 이동" },
-        { time: "16:00", icon: <Train className="w-5 h-5 text-blue-600" />, title: "공항 이동 (라피트)", desc: "신이마미야역 16:04경 탑승 → 16:40 공항 도착 (출발 2h 30m 전)" },
+        { time: "15:37", icon: <Train className="w-5 h-5 text-blue-600" />, title: "라피트 열차 탑승 (확정)", desc: "15:37 신이마미야역 출발 → 16:20 공항 도착 (여유로움)" },
         { time: "19:10", icon: <Plane className="w-5 h-5 text-blue-500" />, title: "간사이 공항 출발", desc: "티웨이항공 (TW), 21:05 인천 도착" }
       ]
     }
