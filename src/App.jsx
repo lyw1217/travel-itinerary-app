@@ -1,5 +1,29 @@
-import React, { useState } from 'react';
-import { Plane, MapPin, Coffee, Utensils, Camera, CreditCard, Heart, Info, ChevronDown, ChevronUp, Users, Leaf, Train, Beer, Ticket, ShoppingBag, Lock, Unlock, Bus, Car, CheckCircle2, Circle, ClipboardList, AlertCircle, BookOpen, Star, Gift, ExternalLink } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { Plane, MapPin, Coffee, Utensils, Camera, CreditCard, Heart, Info, ChevronDown, ChevronUp, Users, Leaf, Train, Beer, Ticket, ShoppingBag, Lock, Unlock, Bus, Car, CheckCircle2, Circle, ClipboardList, AlertCircle, BookOpen, Star, Gift, ExternalLink, Wallet, Cloud, Wifi } from 'lucide-react';
+import { initializeApp } from 'firebase/app';
+import { getAuth, signInAnonymously, onAuthStateChanged } from 'firebase/auth';
+import { getFirestore, doc, setDoc, onSnapshot } from 'firebase/firestore';
+
+// --- Firebase Configuration ---
+// ⚠️ 주의: Vercel 배포 시에는 본인의 Firebase 프로젝트 설정값으로 교체해야 합니다.
+// 현재는 Canvas 환경 변수를 사용 중입니다.
+const firebaseConfig = {
+  apiKey: "AIzaSyA5JBss_VQNPbIs5y-beIHI7Rbu-6lJLt4",
+  authDomain: "tracel-itineray-app.firebaseapp.com",
+  databaseURL: "https://tracel-itineray-app-default-rtdb.firebaseio.com",
+  projectId: "tracel-itineray-app",
+  storageBucket: "tracel-itineray-app.firebasestorage.app",
+  messagingSenderId: "312177895297",
+  appId: "1:312177895297:web:eda1fb7c95653695162a80",
+  measurementId: "G-Q5BFY49GPH"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const db = getFirestore(app);
+// 공유를 위한 App ID (실제 배포시는 고유한 문자열로 고정하는 것을 추천, 예: "my-family-trip-2026")
+const appId = typeof __app_id !== 'undefined' ? __app_id : 'family-trip-2026';
 
 const Card = ({ children, className = "" }) => (
   <div className={`bg-white rounded-xl shadow-lg overflow-hidden border border-stone-100 ${className}`}>
@@ -11,10 +35,45 @@ export default function App() {
   const [activeTab, setActiveTab] = useState('itinerary');
   const [expandedDays, setExpandedDays] = useState([]); 
   const [showBudget, setShowBudget] = useState(false);
+  const [user, setUser] = useState(null);
+  const [isSyncing, setIsSyncing] = useState(false);
 
+  // Data States (Synced with Cloud)
   const [checkedItems, setCheckedItems] = useState({});
 
-  // --- Action Handlers ---
+  // --- 1. Authentication (Anonymous) ---
+  useEffect(() => {
+    const initAuth = async () => {
+      try {
+        await signInAnonymously(auth);
+      } catch (error) {
+        console.error("Auth error:", error);
+      }
+    };
+    initAuth();
+    const unsubscribe = onAuthStateChanged(auth, setUser);
+    return () => unsubscribe();
+  }, []);
+
+  // --- 2. Real-time Data Sync (Firestore - Public Shared Data) ---
+  useEffect(() => {
+    if (!user) return;
+
+    // 경로 수정: doc() 함수는 짝수 개의 경로 세그먼트가 필요합니다.
+    // artifacts/{appId}/public/data/checklist/main (6 segments)
+    const checklistDocRef = doc(db, 'artifacts', appId, 'public', 'data', 'checklist', 'main');
+
+    const unsubChecklist = onSnapshot(checklistDocRef, (docSnapshot) => {
+      if (docSnapshot.exists()) {
+        setCheckedItems(docSnapshot.data().items || {});
+      }
+      setIsSyncing(false);
+    }, (error) => console.error("Sync error:", error));
+
+    return () => unsubChecklist();
+  }, [user]);
+
+  // --- 3. Action Handlers ---
 
   const toggleDay = (day) => {
     setExpandedDays(prev => 
@@ -24,18 +83,37 @@ export default function App() {
     );
   };
 
-  const toggleCheck = (id) => {
-    setCheckedItems(prev => ({
-      ...prev,
-      [id]: !prev[id]
-    }));
+  const toggleCheck = async (id) => {
+    if (!user) return;
+
+    setIsSyncing(true);
+    const newCheckedItems = {
+      ...checkedItems,
+      [id]: !checkedItems[id]
+    };
+
+    // Optimistic UI update (화면 먼저 갱신)
+    setCheckedItems(newCheckedItems);
+
+    try {
+      // 클라우드에 저장 (공유 데이터)
+      // 경로 수정: 위와 동일하게 'checklist/main' 문서에 저장
+      await setDoc(doc(db, 'artifacts', appId, 'public', 'data', 'checklist', 'main'), {
+        items: newCheckedItems,
+        lastUpdated: new Date().toISOString(),
+        updatedBy: user.uid
+      });
+    } catch (error) {
+      console.error("Error saving checklist:", error);
+      setIsSyncing(false);
+    }
   };
 
   const toggleSecretMode = () => {
     setShowBudget(!showBudget);
   };
 
-  // 맛집 데이터 (Google Maps 링크 포함)
+  // 맛집 데이터 (Google Maps 링크 포함) - 누락된 데이터 복구
   const diningData = [
     {
       day: 0, // Special Section
@@ -203,18 +281,28 @@ export default function App() {
       ]
     },
     {
-      title: "부모님 맞춤 준비물",
+      title: "환전 & 결제 준비",
+      icon: <Wallet className="w-5 h-5 text-yellow-600" />,
+      color: "border-l-4 border-yellow-500",
+      items: [
+        { id: 'mon_cash', text: '엔화 현금 준비 (교토 입장료 등 현금 필수)' },
+        { id: 'mon_coin', text: '동전 지갑 (자판기, 입장료 사용 시 편리)' },
+        { id: 'mon_card', text: '트래블로그/월렛 카드 충전 확인' },
+      ]
+    },
+    {
+      title: "짐 싸기 & 부모님 케어",
       icon: <ShoppingBag className="w-5 h-5 text-emerald-600" />,
       color: "border-l-4 border-emerald-500",
       items: [
-        { id: 'pack_pass', text: '여권 (유효기간 6개월 이상)' },
-        { id: 'pack_money', text: '엔화 현금 & 트래블 카드' },
-        { id: 'pack_110v', text: '110V 돼지코 어댑터 (필수)' },
-        { id: 'pack_med', text: '부모님 상비약(혈압약 등) & 소화제' },
-        { id: 'pack_heat', text: '휴족시간 & 핫팩 (많이 걷는 날 대비)' },
-        { id: 'pack_shoes', text: '가장 편한 운동화 신고 가기' },
+        { id: 'pack_weight', text: '★ 위탁수하물 무게 체크 (가는편 파라타 15kg!)' },
+        { id: 'pack_110v', text: '110V 돼지코 어댑터 & 멀티탭' },
+        { id: 'pack_med', text: '상비약 (소화제, 진통제, 평소 드시는 약)' },
+        { id: 'pack_care', text: '휴족시간 & 핫팩 (많이 걷는 날 대비)' },
+        { id: 'pack_shoes', text: '가장 편한 운동화 착용' },
         { id: 'pack_power', text: '보조배터리 & 충전 케이블' },
         { id: 'pack_umb', text: '작은 우산 (비상용)' },
+        { id: 'pack_wifi', text: '와이파이 도시락/유심/로밍 신청 확인' },
       ]
     }
   ];
@@ -274,8 +362,8 @@ export default function App() {
       theme: "쇼핑 & 힐링 후 저녁 출발",
       color: "border-l-4 border-gray-400",
       activities: [
-        { time: "10:30", icon: <CreditCard className="w-5 h-5 text-gray-500" />, title: "체크아웃 & 짐 보관", desc: "12시까지 체크아웃 가능! 느긋하게 준비 후 짐 보관." },
-        { time: "11:00", icon: <Utensils className="w-5 h-5 text-orange-500" />, title: "구로몬 시장 투어", desc: "해산물/과일 꼬치, 이부키 커피 등 아침 겸 간식", link: "https://www.google.com/maps/search/?api=1&query=Kuromon+Ichiba+Market" },
+        { time: "10:00", icon: <CreditCard className="w-5 h-5 text-gray-500" />, title: "체크아웃 & 짐 보관", desc: "12시까지 체크아웃 가능! 느긋하게 준비 후 짐 보관." },
+        { time: "10:30", icon: <Utensils className="w-5 h-5 text-orange-500" />, title: "구로몬 시장 투어", desc: "해산물/과일 꼬치, 이부키 커피 등 아침 겸 간식", link: "https://www.google.com/maps/search/?api=1&query=Kuromon+Ichiba+Market" },
         { time: "12:30", icon: <ShoppingBag className="w-5 h-5 text-purple-600" />, title: "난바 파크스 쇼핑 & 점심", desc: "공중정원 산책 후 식당가에서 마지막 식사 (샤브샤브/파스타)", link: "https://www.google.com/maps/search/?api=1&query=Namba+Parks" },
         { time: "15:00", icon: <Coffee className="w-5 h-5 text-amber-600" />, title: "짐 찾기 및 이동 준비", desc: "호텔 복귀하여 짐 찾고 에비스초역→신이마미야역 이동" },
         { time: "15:37", icon: <Train className="w-5 h-5 text-blue-600" />, title: "라피트 열차 탑승 (확정)", desc: "15:37 신이마미야역 출발 → 16:20 공항 도착 (여유로움)", link: "https://www.google.com/maps/search/?api=1&query=Shin-Imamiya+Station+Osaka" },
