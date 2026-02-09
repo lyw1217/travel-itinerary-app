@@ -183,12 +183,12 @@ export default function App() {
       meals: [
         {
           type: "점심 (아라시야마)",
-          desc: "버스투어 중 자유 식사 (웨이팅 주의, 오픈런 추천)",
+          desc: "버스투어 3시간 자유시간! '예약 없이' 갈 수 있는 곳 위주",
           spots: [
-            { name: "사가 토우프 이네", note: "두부/유바 정식. 속 편하고 매장 넓어 회전율 좋음", tag: "부모님 최애", link: "https://www.google.com/maps/search/?api=1&query=Saga+Tofu+Ine+Arashiyama" },
-            { name: "아라시야마 요시무라", note: "도게츠교 전망 소바 맛집. 개별실/테이블석 보유", tag: "풍경 굿", link: "https://www.google.com/maps/search/?api=1&query=Arashiyama+Yoshimura" },
-            { name: "히로카와 (장어)", note: "예약 필수(유료). 조용하고 고급스러움 (어린이 없으면 강추)", tag: "예약 필수", link: "https://www.google.com/maps/search/?api=1&query=Unagi+Hirokawa+Arashiyama" },
-            { name: "아라시야마 쿠마히코", note: "정통 교요리(가이세키) 런치. 조용한 식사 원하면 1순위", tag: "고급", link: "https://www.google.com/maps/search/?api=1&query=Arashiyama+Kumahiko" }
+            { name: "사가 토우프 이네", note: "두부/유바 정식. 매장이 크고 회전율 좋아 대기 짧음", tag: "부모님 추천", link: "https://www.google.com/maps/search/?api=1&query=Saga+Tofu+Ine+Arashiyama" },
+            { name: "아라시야마 요시무라", note: "도게츠교 전망 소바. 대기 명단 적고 주변 구경 가능", tag: "뷰 맛집", link: "https://www.google.com/maps/search/?api=1&query=Arashiyama+Yoshimura" },
+            { name: "오부 카페 (Obu Cafe)", note: "식사/디저트 모두 가능. 예약 불가라 오히려 공평함", tag: "캐주얼", link: "https://www.google.com/maps/search/?api=1&query=Obu+Cafe+Arashiyama" },
+            { name: "유도후 타케무라", note: "가성비 좋은 두부 정식. 예약 없이 방문 가능", tag: "현지인", link: "https://www.google.com/maps/search/?api=1&query=Yudofu+Takemura+Arashiyama" }
           ]
         },
         {
@@ -205,17 +205,17 @@ export default function App() {
     },
     {
       day: 3,
-      title: "3일차: 미식의 날 (면요리 & 와규)",
+      title: "3일차: 미식의 날 (히츠마부시 & 와규)",
       color: "border-l-4 border-blue-500",
       meals: [
         {
           type: "점심 (우메다)",
-          desc: "줄 서도 가치 있는 맛집 or 백화점 식당가",
+          desc: "줄 서도 가치 있는 맛집 or 장어덮밥",
           spots: [
+            { name: "히츠마부시 빈쵸 (그랜드프론트)", note: "나고야식 장어덮밥. 백화점 내 위치해 쾌적함", tag: "장어 추천", link: "https://www.google.com/maps/search/?api=1&query=Hitsumabushi+Bincho+Grand+Front+Osaka" },
             { name: "우동야 키스케", note: "타베로그 3.75 백명점. 면발이 매끄러워 부모님도 호평", tag: "대기 있음", link: "https://www.google.com/maps/search/?api=1&query=Udonya+Kisuke+Osaka" },
-            { name: "템푸라 마키노", note: "갓 튀긴 튀김 정식. 가성비 훌륭하나 카운터석 위주", tag: "가성비", link: "https://www.google.com/maps/search/?api=1&query=Tempura+Makino+Umeda" },
-            { name: "혼미야케 (한큐삼번가)", note: "스테이크 덮밥/전골. (무기토로 폐점으로 대체 추천)", tag: "고기", link: "https://www.google.com/maps/search/?api=1&query=Honmiyake+Hankyu+Sanbangai" },
-            { name: "키지 본점 (오코노미야키)", note: "맛은 최고이나 계단 가파르고 매우 협소함", tag: "무릎 주의", link: "https://www.google.com/maps/search/?api=1&query=Okonomiyaki+Kiji+Umeda" }
+            { name: "혼미야케 (한큐삼번가)", note: "스테이크 덮밥/전골. 가성비 훌륭한 고기 맛집", tag: "고기", link: "https://www.google.com/maps/search/?api=1&query=Honmiyake+Hankyu+Sanbangai" },
+            { name: "템푸라 마키노", note: "갓 튀긴 튀김 정식. 가성비 훌륭하나 카운터석 위주", tag: "가성비", link: "https://www.google.com/maps/search/?api=1&query=Tempura+Makino+Umeda" }
           ]
         },
         {
@@ -238,7 +238,7 @@ export default function App() {
     },
     {
       day: 4,
-      title: "4일차: 시장 먹방 & 편안한 마무리",
+      title: "4일차: 시장 먹방 & 히츠마부시",
       color: "border-l-4 border-gray-400",
       meals: [
         {
@@ -250,12 +250,12 @@ export default function App() {
           ]
         },
         {
-          type: "점심 (난바 파크스/다이닝메종)",
-          desc: "공항 가기 전 짐 보관하고 쾌적하게 식사",
+          type: "점심 (난바 파크스/오리엔탈)",
+          desc: "★여행의 하이라이트: 장어덮밥(히츠마부시) 먹는 날!",
           spots: [
-            { name: "케itei (恵亭) - 다이닝메종", note: "카츠쿠라가 없음. 프리미엄 돈카츠, 양배추/밥 리필", tag: "고급 돈카츠", link: "https://www.google.com/maps/search/?api=1&query=Keitei+Namba+Dining+Maison" },
-            { name: "우나기 요다이메 키쿠카와", note: "난바 오리엔탈 호텔 2층. 개별실 완비, 고급스러운 마무리", tag: "장어", link: "https://www.google.com/maps/search/?api=1&query=Unagi+Yondaime+Kikukawa+Namba" },
-            { name: "야사이 야 메이 (난바파크스)", note: "야채 샤브샤브 & 솥밥. (온야사이보다 고급짐)", tag: "건강식", link: "https://www.google.com/maps/search/?api=1&query=Yasaiya+Mei+Namba+Parks" }
+            { name: "우나기 요다이메 키쿠카와", note: "난바 오리엔탈 호텔 2층. 명품 '히츠마부시' 정식", tag: "장어 맛집", link: "https://www.google.com/maps/search/?api=1&query=Unagi+Yondaime+Kikukawa+Namba" },
+            { name: "케itei (恵亭) - 다이닝메종", note: "프리미엄 돈카츠. (장어 못 드시는 경우 추천)", tag: "고급 돈카츠", link: "https://www.google.com/maps/search/?api=1&query=Keitei+Namba+Dining+Maison" },
+            { name: "야사이 야 메이 (난바파크스)", note: "야채 샤브샤브 & 솥밥. 건강식 선호 시", tag: "건강식", link: "https://www.google.com/maps/search/?api=1&query=Yasaiya+Mei+Namba+Parks" }
           ]
         }
       ]
