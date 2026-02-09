@@ -344,7 +344,7 @@ export default function App() {
       color: "border-l-4 border-emerald-500",
       activities: [
         { time: "07:50", icon: <Bus className="w-5 h-5 text-emerald-600" />, title: "투어 집합 및 출발", desc: "집합: 츠루통탄 소에몬쵸점 앞 (도톤보리). 호텔에서 택시/도보 이동 추천", link: "https://www.google.com/maps/search/?api=1&query=Tsurutontan+Soemoncho+Osaka" },
-        { time: "09:40", icon: <Leaf className="w-5 h-5 text-green-600" />, title: "아라시야마 (3h) & 점심", desc: "대나무 숲 산책. 점심은 줄 짧은 정식집이나 두부요리 추천", link: "https://www.google.com/maps/search/?api=1&query=Arashiyama+Bamboo+Grove+Kyoto" },
+        { time: "09:40", icon: <Leaf className="w-5 h-5 text-green-600" />, title: "아라시야마 (3h) & 점심", desc: "대나무 숲 산책. 점심은 회전율 좋은 두부요리나 소바 추천 (웨이팅 주의)", link: "https://www.google.com/maps/search/?api=1&query=Arashiyama+Bamboo+Grove+Kyoto" },
         { time: "13:00", icon: <Camera className="w-5 h-5 text-yellow-600" />, title: "금각사 (50m)", desc: "황금빛 3층 누각과 연못이 어우러진 교토의 상징 (입장료 500엔)", link: "https://www.google.com/maps/search/?api=1&query=Kinkakuji+Kyoto" },
         { time: "14:25", icon: <Ticket className="w-5 h-5 text-purple-600" />, title: "청수사(기요미즈데라) (2h)", desc: "★팁: 부모님이 힘드시면 본당 계단 대신 니넨자카 거리 위주로 산책하세요.", link: "https://www.google.com/maps/search/?api=1&query=Kiyomizu-dera+Kyoto" },
         { time: "16:50", icon: <Bus className="w-5 h-5 text-gray-500" />, title: "교토역 경유", desc: "숙박객 하차 지점 (오사카 숙박이므로 계속 탑승)" },
@@ -359,7 +359,7 @@ export default function App() {
       color: "border-l-4 border-blue-500",
       activities: [
         { time: "09:30", icon: <MapPin className="w-5 h-5 text-green-600" />, title: "오사카 성 공원", desc: "★천수각 입장 무료(주유패스). 공원 산책 및 외관 촬영 위주.", link: "https://www.google.com/maps/search/?api=1&query=Osaka+Castle+Park" },
-        { time: "12:30", icon: <Utensils className="w-5 h-5 text-rose-500" />, title: "점심: 우메다 백화점 식당가", desc: "함박스테이크 등 대기 줄 짧은 곳 선택 (맛집 탭 참고)", link: "https://www.google.com/maps/search/?api=1&query=Hankyu+Umeda+Main+Store" },
+        { time: "12:30", icon: <Utensils className="w-5 h-5 text-rose-500" />, title: "점심: 우메다 백화점 식당가", desc: "함박스테이크, 장어덮밥 등 대기 줄 짧은 곳 선택 (맛집 탭 참고)", link: "https://www.google.com/maps/search/?api=1&query=Hankyu+Umeda+Main+Store" },
         { time: "14:30", icon: <Camera className="w-5 h-5 text-blue-600" />, title: "우메다 공중정원", desc: "★입장 무료(주유패스, 15:00 이전 입장 시). 탁 트인 전망 감상", link: "https://www.google.com/maps/search/?api=1&query=Umeda+Sky+Building" },
         { time: "17:30", icon: <Ticket className="w-5 h-5 text-purple-600" />, title: "도톤보리 리버(원더)크루즈", desc: "★승선 무료(주유패스). 매표소에서 패스 제시 후 티켓 교환 필수", link: "https://www.google.com/maps/search/?api=1&query=Dotonbori+Glico+Man+Sign" },
         { time: "19:00", icon: <Utensils className="w-5 h-5 text-rose-500" />, title: "저녁: 와규 야키니쿠", desc: "오사카에서의 마지막 만찬! 예약해둔 식당으로 이동" }
@@ -374,7 +374,7 @@ export default function App() {
       activities: [
         { time: "10:00", icon: <CreditCard className="w-5 h-5 text-gray-500" />, title: "체크아웃 & 짐 보관", desc: "12시까지 체크아웃 가능! 느긋하게 준비 후 짐 보관." },
         { time: "10:30", icon: <Utensils className="w-5 h-5 text-orange-500" />, title: "구로몬 시장 투어", desc: "해산물/과일 꼬치, 이부키 커피 등 아침 겸 간식", link: "https://www.google.com/maps/search/?api=1&query=Kuromon+Ichiba+Market" },
-        { time: "12:30", icon: <ShoppingBag className="w-5 h-5 text-purple-600" />, title: "난바 파크스 쇼핑 & 점심", desc: "공중정원 산책 후 식당가에서 마지막 식사 (샤브샤브/파스타)", link: "https://www.google.com/maps/search/?api=1&query=Namba+Parks" },
+        { time: "12:30", icon: <ShoppingBag className="w-5 h-5 text-purple-600" />, title: "점심: 장어덮밥(히츠마부시)", desc: "★여행의 하이라이트! 맛있는 장어덮밥으로 몸보신 (식당가)", link: "https://www.google.com/maps/search/?api=1&query=Namba+Parks" },
         { time: "15:00", icon: <Coffee className="w-5 h-5 text-amber-600" />, title: "짐 찾기 및 이동 준비", desc: "호텔 복귀하여 짐 찾고 에비스초역→신이마미야역 이동" },
         { time: "15:37", icon: <Train className="w-5 h-5 text-blue-600" />, title: "라피트 열차 탑승 (확정)", desc: "15:37 신이마미야역 출발 → 16:20 공항 도착 (여유로움)", link: "https://www.google.com/maps/search/?api=1&query=Shin-Imamiya+Station+Osaka" },
         { time: "19:10", icon: <Plane className="w-5 h-5 text-blue-500" />, title: "간사이 공항 출발", desc: "티웨이항공 (TW), 21:05 인천 도착" }
