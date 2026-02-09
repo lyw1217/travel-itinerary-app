@@ -152,16 +152,24 @@ export default function App() {
       meals: [
         {
           type: "저녁 (쿠시카츠)",
-          desc: "오사카 명물 튀김꼬치. 소스는 한 번만 찍는 것이 룰!",
+          desc: "오사카 명물 튀김꼬치. 부모님 동반 시 '좌석 편한 곳'이 1순위!",
           spots: [
-            { name: "쿠시카츠 다루마 신세카이점", note: "본점 라인, 회전 빠름", tag: "약간 대기", link: "https://www.google.com/maps/search/?api=1&query=Kushikatsu+Daruma+Shinsekai+Main+Shop+Osaka" },
-            { name: "쿠시카츠 다루마 츠텐카쿠점", note: "에비스초역 근처, 부모님과 가기 편함", tag: "추천", link: "https://www.google.com/maps/search/?api=1&query=Kushikatsu+Daruma+Tsutenkaku+Osaka" },
-            { name: "쿠시카츠 사쿠라 본점", note: "조용한 분위기, 로컬 느낌", tag: "대기 적음", link: "https://www.google.com/maps/search/?api=1&query=Kushikatsu+Sakura+Shinsekai+Osaka" }
+            { name: "쿠시카츠 요코즈나 츠텐카쿠점", note: "매장이 넓고 테이블석 완비, 가족 식사 1티어", tag: "가족 추천", link: "https://www.google.com/maps/search/?api=1&query=Kushikatsu+Yokozuna+Tsutenkaku" },
+            { name: "묘다이 츠루카메야", note: "꼬치 외 메뉴 다양, 다타미 좌석 있어 어르신 편함", tag: "좌식 있음", link: "https://www.google.com/maps/search/?api=1&query=Tsurukameya+Shinsekai" },
+            { name: "쿠시카츠 다루마 동물원앞점", note: "총본점보다 넓고 쾌적함 (본점은 너무 좁음 주의)", tag: "안정적", link: "https://www.google.com/maps/search/?api=1&query=Kushikatsu+Daruma+Dobutsuenmae" }
+          ]
+        },
+        {
+          type: "주의사항 (비추천)",
+          desc: "가족 동반 시 피해야 할 곳",
+          spots: [
+            { name: "논키야 (Nonkiya)", note: "서서 먹는 곳(타치노미). 어르신 모시기엔 부적합", tag: "구경만", link: "" },
+            { name: "쿠시카츠 다루마 총본점", note: "카운터석 위주라 3인이 대화하기 힘듦", tag: "좁음", link: "" }
           ]
         },
         {
           type: "야식/마무리 (라멘)",
-          desc: "첫 날 밤을 따뜻한 국물로 마무리 (호텔 라면도 있음!)",
+          desc: "첫 날 밤을 따뜻한 국물로 마무리",
           spots: [
             { name: "멘도코로 토라지", note: "신세카이 인근, 국물이 좋은 라멘집", tag: "한산함", link: "https://www.google.com/maps/search/?api=1&query=Mendokoro+Toraji+Shinsekai+Osaka" }
           ]
@@ -175,77 +183,79 @@ export default function App() {
       meals: [
         {
           type: "점심 (아라시야마)",
-          desc: "버스투어 중 자유 식사 (11:30 입장 추천)",
+          desc: "버스투어 중 자유 식사 (웨이팅 주의, 오픈런 추천)",
           spots: [
-            { name: "골목 안 소규모 정식집", note: "덮밥/우동 등 가정식, 줄 짧은 곳", tag: "무난함", link: "https://www.google.com/maps/search/?api=1&query=Arashiyama+Lunch+Osaka" },
-            { name: "두부 요리집 (유도후)", note: "부모님 속 편한 메뉴", tag: "웨이팅 확인", link: "https://www.google.com/maps/search/?api=1&query=Arashiyama+Tofu+Restaurant" },
-            { name: "카페 레스토랑", note: "파스타/카레 등 가볍게 해결", tag: "빠름", link: "https://www.google.com/maps/search/?api=1&query=Arashiyama+Cafe+Lunch" }
+            { name: "사가 토우프 이네", note: "두부/유바 정식. 속 편하고 매장 넓어 회전율 좋음", tag: "부모님 최애", link: "https://www.google.com/maps/search/?api=1&query=Saga+Tofu+Ine+Arashiyama" },
+            { name: "아라시야마 요시무라", note: "도게츠교 전망 소바 맛집. 개별실/테이블석 보유", tag: "풍경 굿", link: "https://www.google.com/maps/search/?api=1&query=Arashiyama+Yoshimura" },
+            { name: "히로카와 (장어)", note: "예약 필수(유료). 조용하고 고급스러움 (어린이 없으면 강추)", tag: "예약 필수", link: "https://www.google.com/maps/search/?api=1&query=Unagi+Hirokawa+Arashiyama" },
+            { name: "아라시야마 쿠마히코", note: "정통 교요리(가이세키) 런치. 조용한 식사 원하면 1순위", tag: "고급", link: "https://www.google.com/maps/search/?api=1&query=Arashiyama+Kumahiko" }
           ]
         },
         {
           type: "저녁 (난바/도톤보리)",
-          desc: "투어 복귀 후 가볍고 부담 없는 식사",
+          desc: "인파 속 '탈출구' 같은 조용하고 편안한 식당",
           spots: [
-            { name: "이마이 우동 본점", note: "도톤보리 중심, 깔끔한 국물", tag: "회전 빠름", link: "https://www.google.com/maps/search/?api=1&query=Dotonbori+Imai+Main+Shop+Osaka" },
-            { name: "오사카오쇼 난바 센니치마에점", note: "교자 & 중화요리, 좌석 많음", tag: "대기 적음", link: "https://www.google.com/maps/search/?api=1&query=Osaka+Ohsho+Namba+Sennichimae" },
-            { name: "백화점 식당가", note: "난바 마루이 등, 엘리베이터 이동 편리", tag: "쾌적함", link: "https://www.google.com/maps/search/?api=1&query=Namba+Marui+Restaurant" }
+            { name: "도톤보리 이마이 본점", note: "매우 조용하고 접객 정중함. 육수 훌륭한 우동/덮밥", tag: "강력 추천", link: "https://www.google.com/maps/search/?api=1&query=Dotonbori+Imai+Main+Shop" },
+            { name: "간코 도톤보리점", note: "대형 체인이라 자리 넓고 서비스 안정적. 실패 없음", tag: "안전빵", link: "https://www.google.com/maps/search/?api=1&query=Ganko+Dotonbori" },
+            { name: "네기야키 야마모토", note: "파가 많아 담백함. 3인이 메뉴 쉐어하기 좋음", tag: "별미", link: "https://www.google.com/maps/search/?api=1&query=Negiyaki+Yamamoto+Namba" },
+            { name: "미즈노 (오코노미야키)", note: "맛은 좋으나 웨이팅 길고 좌석 좁음", tag: "대기 주의", link: "https://www.google.com/maps/search/?api=1&query=Mizuno+Okonomiyaki" }
           ]
         }
       ]
     },
     {
       day: 3,
-      title: "3일차: 미식의 날 (함박 & 와규 & 라멘)",
+      title: "3일차: 미식의 날 (면요리 & 와규)",
       color: "border-l-4 border-blue-500",
       meals: [
         {
           type: "점심 (우메다)",
-          desc: "동양정 대기 길면 백화점 식당가 공략",
+          desc: "줄 서도 가치 있는 맛집 or 백화점 식당가",
           spots: [
-            { name: "그릴 캐피탈 동양정 (한큐)", note: "함박스테이크/양식, 현장 대기 보고 결정", tag: "접근성 갑", link: "https://www.google.com/maps/search/?api=1&query=Grill+Capital+Touyoutei+Hankyu+Umeda" },
-            { name: "가정식 정식집", note: "한큐/한신 백화점 내, 좌석 넓음", tag: "부모님 추천", link: "https://www.google.com/maps/search/?api=1&query=Hankyu+Umeda+Restaurant" },
-            { name: "지하상가 카레/돈카츠", note: "빠른 회전, 가볍게 해결", tag: "웨이팅 없음", link: "https://www.google.com/maps/search/?api=1&query=Umeda+Underground+Restaurant" }
+            { name: "우동야 키스케", note: "타베로그 3.75 백명점. 면발이 매끄러워 부모님도 호평", tag: "대기 있음", link: "https://www.google.com/maps/search/?api=1&query=Udonya+Kisuke+Osaka" },
+            { name: "템푸라 마키노", note: "갓 튀긴 튀김 정식. 가성비 훌륭하나 카운터석 위주", tag: "가성비", link: "https://www.google.com/maps/search/?api=1&query=Tempura+Makino+Umeda" },
+            { name: "혼미야케 (한큐삼번가)", note: "스테이크 덮밥/전골. (무기토로 폐점으로 대체 추천)", tag: "고기", link: "https://www.google.com/maps/search/?api=1&query=Honmiyake+Hankyu+Sanbangai" },
+            { name: "키지 본점 (오코노미야키)", note: "맛은 최고이나 계단 가파르고 매우 협소함", tag: "무릎 주의", link: "https://www.google.com/maps/search/?api=1&query=Okonomiyaki+Kiji+Umeda" }
           ]
         },
         {
-          type: "저녁 (난바 와규)",
-          desc: "입에서 살살 녹는 소고기 파티 (예약 권장)",
+          type: "저녁 (난바 와규/일식)",
+          desc: "마지막 저녁은 '예약 가능한' 곳에서 우아하게",
           spots: [
-            { name: "Akatsuki Gyu (아카츠키)", note: "A5 와규 코스, 온라인 예약 가능", tag: "예약 필수", link: "https://www.google.com/maps/search/?api=1&query=Akatsuki+Gyu+Namba+Osaka" },
-            { name: "Yakiniku Lab 난바점", note: "룸 좌석 많음, Klook 예약 가능", tag: "프라이빗", link: "https://www.google.com/maps/search/?api=1&query=Yakiniku+Lab+Namba" },
-            { name: "마츠사카규 야키니쿠 M", note: "호젠지 인근 유명 맛집", tag: "인기 많음", link: "https://www.google.com/maps/search/?api=1&query=Matsusakagyu+Yakiniku+M+Hozenji+Yokocho" }
+            { name: "마츠자카규 야키니쿠 M", note: "전석 개별룸(Private Room). 가족끼리 오붓한 식사 최적", tag: "예약 필수", link: "https://www.google.com/maps/search/?api=1&query=Matsusakagyu+Yakiniku+M+Hozenji+Yokocho" },
+            { name: "간코 난바 본점", note: "도톤보리점보다 크고 개별실(호리고타츠) 예약 가능", tag: "부모님 픽", link: "https://www.google.com/maps/search/?api=1&query=Ganko+Namba+Honten" },
+            { name: "우라난바 렌 (Ren)", note: "이자카야지만 개별실 완비 & 코스 요리 있음", tag: "조용함", link: "https://www.google.com/maps/search/?api=1&query=Uranamba+Ren" }
           ]
         },
         {
           type: "선택 사항 (라멘)",
           desc: "야키니쿠 전후로 출출하다면?",
           spots: [
-            { name: "하나마루켄 라멘", note: "24시간, 호젠지 골목, 간사이 스타일", tag: "줄 짧은 편", link: "https://www.google.com/maps/search/?api=1&query=Hanamaruken+Namba+Hozenji" },
-            { name: "라멘 보꼬시", note: "진한 국물, 도톤보리 메인에서 한 블록 뒤", tag: "숨은 맛집", link: "https://www.google.com/maps/search/?api=1&query=Ramen+Bokkoshi+Osaka" },
-            { name: "나니와 멘지로", note: "난바역 역사 내 위치", tag: "현지인 위주", link: "https://www.google.com/maps/search/?api=1&query=Naniwa+Menjiro+Namba" }
+            { name: "하나마루켄 라멘", note: "24시간, 호젠지 골목, 간사이 스타일", tag: "줄 짧음", link: "https://www.google.com/maps/search/?api=1&query=Hanamaruken+Namba+Hozenji" }
           ]
         }
       ]
     },
     {
       day: 4,
-      title: "4일차: 시장 먹방 & 마지막 식사",
+      title: "4일차: 시장 먹방 & 편안한 마무리",
       color: "border-l-4 border-gray-400",
       meals: [
         {
           type: "아침/간식 (구로몬 시장)",
           desc: "조금씩 다양하게 맛보기",
           spots: [
-            { name: "이부키 커피", note: "토스트+커피 모닝 세트, 앉아서 휴식", tag: "조식 추천", link: "https://www.google.com/maps/search/?api=1&query=Ibuki+Coffee+Kuromon+Osaka" },
-            { name: "꼬치 요리 & 스시", note: "가리비/새우/과일 꼬치 등", tag: "길거리 음식", link: "https://www.google.com/maps/search/?api=1&query=Kuromon+Market+Osaka" }
+            { name: "이부키 커피", note: "토스트+커피 모닝 세트. 시장 내 앉아서 쉴 수 있는 곳", tag: "휴식", link: "https://www.google.com/maps/search/?api=1&query=Ibuki+Coffee+Kuromon" },
+            { name: "시장 길거리 음식", note: "가리비구이, 오뎅, 스시 등", tag: "현금", link: "https://www.google.com/maps/search/?api=1&query=Kuromon+Market+Osaka" }
           ]
         },
         {
-          type: "점심 (난바 파크스)",
-          desc: "공항 가기 전 쾌적하고 여유롭게",
+          type: "점심 (난바 파크스/다이닝메종)",
+          desc: "공항 가기 전 짐 보관하고 쾌적하게 식사",
           spots: [
-            { name: "샤브샤브 온야사이", note: "점심엔 여유로움, 야채 섭취", tag: "속 편함", link: "https://www.google.com/maps/search/?api=1&query=Onyasai+Namba+Osaka" },
-            { name: "레스토랑층 (파스타/일식)", note: "줄 짧은 곳 골라 들어가기", tag: "선택 다양", link: "https://www.google.com/maps/search/?api=1&query=Namba+Parks+Restaurant" }
+            { name: "케itei (恵亭) - 다이닝메종", note: "카츠쿠라가 없음. 프리미엄 돈카츠, 양배추/밥 리필", tag: "고급 돈카츠", link: "https://www.google.com/maps/search/?api=1&query=Keitei+Namba+Dining+Maison" },
+            { name: "우나기 요다이메 키쿠카와", note: "난바 오리엔탈 호텔 2층. 개별실 완비, 고급스러운 마무리", tag: "장어", link: "https://www.google.com/maps/search/?api=1&query=Unagi+Yondaime+Kikukawa+Namba" },
+            { name: "야사이 야 메이 (난바파크스)", note: "야채 샤브샤브 & 솥밥. (온야사이보다 고급짐)", tag: "건강식", link: "https://www.google.com/maps/search/?api=1&query=Yasaiya+Mei+Namba+Parks" }
           ]
         }
       ]
